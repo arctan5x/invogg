@@ -1,0 +1,36 @@
+--- # Default values from https://github.com/Invoiced/invoice-generator-api
+- invoice_template:
+    header: "INVOICE"
+    to_title: "Client"
+    invoice_number_title: "#"
+    date_title: "Date"
+    payment_terms_title: "Payment Terms"
+    due_date_title: "Due Date"
+    purchase_order_title: "Purchase Order"
+    quantity_header: "Quantity"
+    item_header: "Item"
+    unit_cost_header: "Rate"
+    amount_header: "Amount"
+    subtotal_title: "Subtotal"
+    discounts_title: "Discounts"
+    tax_title: "Tax"
+    shipping_title: "Shipping"
+    total_title: "Total"
+    amount_paid_title: "Amount Paid"
+    balance_title: "Balance"
+    terms_title: "Terms"
+    notes_title: "Notes"
+- invoice:
+    logo: null # URL of your logo
+    from: null # The name of your organization
+    to: null # The entity being billed - multiple lines ok
+    number: null # Invoice number
+    purchase_order: null # Purchase order number
+    due_date: null # Invoice due date
+    items: [] # Array of objects
+    discounts: 0 # Subtotal discounts
+    tax: 0 # Tax - numbers only
+    shipping: 0 # Shipping - numbers only
+    amount_paid: 0 # Amount paid - numbers only
+    notes: null # any extra information not included elsewhere
+    terms: null # Terms and conditions - all the details
