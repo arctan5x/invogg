@@ -2,7 +2,7 @@ import csv
 
 class Invoice():
 
-    ATTRIBUTES = set(["logo", "from", "to", "number", "purchase_order", "due_date", "discounts", "tax", "shipping", "amount_paid", "notes", "terms"])
+    ATTRIBUTES = set(["logo", "from", "from_address", "to", "to_address", "number", "purchase_order", "due_date", "discounts", "tax", "shipping", "amount_paid", "notes", "terms"])
 
     def __init__(self, headers, data):
         self.items = {}
@@ -11,24 +11,32 @@ class Invoice():
         if len(self.headers) != len(self.data):
             print("Number of headers and data don't match up. Check your invoice csv")
         self.identity = {}
+        self.name = "N/A"
         self.initialize_identity()
 
         
     def initialize_identity(self):
         self.identity['items'] = []
         for i in range(len(self.headers)):
-            if self.headers[i] in Invoice.ATTRIBUTES:
-                self.identity[self.headers[i]] = self.data[i]
-            elif 'item' in self.headers[i]:
-                item_info = self.headers[i].split('_', maxsplit=1)
-                if 'name' in self.headers[i]:
-                    self.identity['items'].append({"name": self.data[i]})
-                elif 'quantity' in self.headers[i]:
-                    self.identity['items'][-1]['quantity'] =float(self.data[i])
-                elif 'unit_cost' in self.headers[i]:
-                    self.identity['items'][-1]['unit_cost'] = float(self.data[i])
-                elif 'description' in self.headers[i]:
-                    self.identity['items'][-1]['description'] = self.data[i]
+            if self.data[i]:
+                if self.headers[i] in Invoice.ATTRIBUTES:
+                    if self.headers[i] == "to":
+                        self.name = self.data[i]
+                    if self.headers[i] == "from_address":
+                        self.identity["from"] += '\n' + self.data[i]
+                    elif self.headers[i] == "to_address":
+                        self.identity["to"] += '\n' + self.data[i]
+                    else:
+                        self.identity[self.headers[i]] = self.data[i]
+                elif 'item' in self.headers[i]:
+                    if 'name' in self.headers[i]:
+                        self.identity['items'].append({"name": self.data[i]})
+                    elif 'quantity' in self.headers[i]:
+                        self.identity['items'][-1]['quantity'] = float(self.data[i])
+                    elif 'unit_cost' in self.headers[i]:
+                        self.identity['items'][-1]['unit_cost'] = float(self.data[i])
+                    elif 'description' in self.headers[i]:
+                        self.identity['items'][-1]['description'] = self.data[i]
 
 
 class Invoices():

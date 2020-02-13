@@ -44,8 +44,8 @@ class InvoggGenerator():
             headers = {'Content-type': 'application/json'}
             r = requests.post(InvoggGenerator.TARGET_URL, data=json.dumps(payload), headers=headers)
             if r.status_code == 200:
-                print("[{}]--------Successfully generated an invoice for {}".format(num+1, invoice.identity.get('to')))
-                with open(os.path.abspath(os.path.join(DIR_NAME, os.pardir, invoice.identity.get('to') + '.pdf')), 'wb') as fd:
+                print("[{}]--------Successfully generated an invoice for {}".format(num+1, invoice.name))
+                with open(os.path.abspath(os.path.join(DIR_NAME, os.pardir, 'generated_pdfs', invoice.name + '.pdf')), 'wb+') as fd:
                     fd.write(r.content)
 
         

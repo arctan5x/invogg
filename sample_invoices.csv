@@ -1,1 +1,8 @@
-logo,from,to,number,purchase_order,due_date,discounts,tax,shipping,amount_paid,notes,terms,item1_name,item1_quantity,item1_unit_cost,item1_description,CompanyA,CompanyB,239928,395882,18-Feb-20,2000,9.5,200,0,sample notes,sample terms,api_call,1,5000,our amazing api service,CompanyA,CompanyC,349592,2839285,21-Feb-20,1000,9.5,150,0,my note,terms,api_call,2,6000,our beautiful api service
+logo,from,from_address,to,to_address,number,purchase_order,due_date,discounts,tax,shipping,amount_paid,notes,terms,item1_name,item1_quantity,item1_unit_cost,item1_description,item2_name,item2_quantity,item2_unit_cost,item2_description,CompanyA,"3958 Happy St. # 5989
+San Francisco, CA 90000",CompanyB,"1234 Hello St. #255
+San Francisco, CA 90000",239928,395882,18-Feb-20,2000,9.5,200,0,sample notes,sample terms,api_call,1,5000,our amazing api service,more_api_call,,3999,,CompanyA,"3958 Happy St. # 5989
+San Francisco, CA 90000",CompanyC,"1234 Hello St. #255
+San Francisco, CA 90000",349592,2839285,,,,,0,my note,terms,api_call,1,6000,our beautiful api service,,,,,CompanyA,"3958 Happy St. # 5989
+San Francisco, CA 90000",CompanyD,"1234 Hello St. #255
+San Francisco, CA 90000",35235,1212,,,,,,"Some Info
+Read Carfully",,api_call,,5000,,,,,
