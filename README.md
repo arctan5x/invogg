@@ -21,3 +21,12 @@ What if an excel spreadsheet (.csv file) can be used to generate multiple invoic
 3. Run ```pip install -r requirements.txt```
 4. Run ```python -m invogg generate --invoice-template path/to/template.yml --invoice-csv path/to/csv```
 * i.e. ```python -m invogg generate --invoice-template sample_invoice_template.yml --invoice-csv sample_invoices.csv```
+
+## Notes
+
+Used APIs from https://github.com/Invoiced/invoice-generator-api.
+
+All yaml attributes for default invoice template should be in the template path. (HAVE NOT IMPLEMENTED USING AN ACTUAL TEMPLATE).
+
+Take a look at sample_invoices.csv for an example. Do NOT modify column headers or their sequence. Only add more item columns if you need more.
+
