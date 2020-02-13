@@ -2,6 +2,7 @@ import os
 import sys
 import requests
 import json
+import time
 
 from invogg.invoice_template import InvoiceTemplate
 from invogg.invoice import Invoices
@@ -42,11 +43,18 @@ class InvoggGenerator():
         for num, invoice in enumerate(self.invoices.invoice_list):
             payload = invoice.identity
             headers = {'Content-type': 'application/json'}
-            r = requests.post(InvoggGenerator.TARGET_URL, data=json.dumps(payload), headers=headers)
+            try:
+                r = requests.post(InvoggGenerator.TARGET_URL, data=json.dumps(payload), headers=headers)
+            except requests.exceptions.ConnectionError:
+                print("Seems like {} is down. Can't do much :/".format(InvoggGenerator.TARGET_URL))
+                sys.exit(1)
+            time.sleep(0.1)
             if r.status_code == 200:
                 print("[{}]--------Successfully generated an invoice for {}".format(num+1, invoice.name))
                 with open(os.path.abspath(os.path.join(DIR_NAME, os.pardir, 'generated_pdfs', invoice.name + '.pdf')), 'wb+') as fd:
                     fd.write(r.content)
+            else:
+                print("[{}]--------Failed to generate an invoice for {}".format(num+1, invoice.name))
 
         
 
