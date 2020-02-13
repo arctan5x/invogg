@@ -24,9 +24,11 @@ What if an excel spreadsheet (.csv file) can be used to generate multiple invoic
 
 ## Notes
 
-Used APIs from https://github.com/Invoiced/invoice-generator-api.
+- Used APIs from https://github.com/Invoiced/invoice-generator-api.
 
-All yaml attributes for default invoice template should be in the template path. (HAVE NOT IMPLEMENTED USING AN ACTUAL TEMPLATE).
+- All yaml attributes for default invoice template should be in the template path. (HAVE NOT IMPLEMENTED USING AN ACTUAL TEMPLATE).
 
-Take a look at sample_invoices.csv for an example. Do NOT modify column headers or their sequence. Only add more item columns if you need more.
+- Take a look at sample_invoices.csv for an example. Do NOT modify column headers or their sequence. Only add more item columns if you need more.
+
+- If you want to edit addressess or notes with multiline, make sure that there is a newline char (in raw) or use Excel to edit the multiline.
 
